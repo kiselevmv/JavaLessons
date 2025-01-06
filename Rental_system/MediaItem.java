@@ -1,16 +1,19 @@
-package Rental_system;
-
-public class MediaItem {
-	public String title;
-	public String rentedBy;
+abstract class MediaItem {
+	private String title;
+	private String rentedBy;
 	private boolean isRented;
+	private boolean returnItem;
 
 
-	public MediaItem(String title) {
+	MediaItem(String title) {
 		this.title = title;
 		this.isRented = false;
 		this.rentedBy = "";
 	}
+
+	// MediaItem() {
+		// Emperty constructor
+	// }
 	
 	public boolean rent(String name) {
 		if (this.isRented == false) {
@@ -23,16 +26,18 @@ public class MediaItem {
 	}
 	
 	public boolean returnItem(String name) {
+	
 		if (this.isRented == true && this.rentedBy == name) {
 			this.isRented = false;
-			return true;
+			returnItem = true;
 		} else if (this.isRented == true && this.rentedBy != name) {
 			System.out.println("Item rented by other customer");
-			return false;
+			returnItem = false;
 		} else if (this.isRented == false) {
 			System.out.println("Item was not rented");
-			return false;
+			returnItem = false;
 		}
+		return returnItem;
 	}
 	
 	public boolean getStatus() {
@@ -41,5 +46,21 @@ public class MediaItem {
 		} else { 
 			return false;
 		}
+	}
+
+	public String getRented() {
+		return rentedBy;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getTitle() {
+		return this.title;
+	}
+
+	public void getDetails() { 
+		System.out.println("Details");
 	}
 }
