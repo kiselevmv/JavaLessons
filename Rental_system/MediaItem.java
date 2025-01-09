@@ -29,6 +29,7 @@ abstract class MediaItem {
 	
 		if (this.isRented == true && this.rentedBy == name) {
 			this.isRented = false;
+			this.rentedBy = "";
 			returnItem = true;
 		} else if (this.isRented == true && this.rentedBy != name) {
 			System.out.println("Item rented by other customer");

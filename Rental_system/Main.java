@@ -1,3 +1,5 @@
+import java.util.Scanner;  // Import the Scanner class
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -12,6 +14,34 @@ public class Main {
 		book1.getDetails();
 		dvd1.getDetails();
 		
+		Scanner scan = new Scanner(System.in);
+		printOptions();
+		String answer = scan.nextLine();
+		while(!answer.equalsIgnoreCase("exit")) {
+			switch(answer) {
+				case "1":
+					printItems();
+					break;
+
+				case "2":
+					rentItem();
+					break;
+
+				case "3":
+					returnItem();
+					break;
+
+				case "4":
+
+					break;
+			}
+			printOptions();
+			answer = scan.nextLine();
+		}
+	}
+
+	private static void printOptions() {
+		System.out.println("Welcome to rentals! \n \t 1. Print all the items. \n \t 2. Rent an item \n \t 3. Return an item \n \t 4. Exit");
 	}
 
 }
