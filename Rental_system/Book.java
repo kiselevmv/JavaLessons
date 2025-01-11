@@ -9,7 +9,7 @@ public class Book extends MediaItem {
 
 
 	@Override public void getDetails() {
-		System.out.print("Book details: ");
+
 		System.out.print("Book \"" + this.getTitle() + "\" is " + this.pages + " pages long. ");
 		if (getStatus() == true) {
 			System.out.println("Book is rented by " + this.getRented());

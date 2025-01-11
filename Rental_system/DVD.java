@@ -8,7 +8,6 @@ public class DVD extends MediaItem {
 	}
 
 	@Override public void getDetails() {
-		System.out.print("DVD details: ");
 		System.out.print("DVD \"" + this.getTitle() + "\" is " + this.runtime + " minutes long. ");
 		if (getStatus() == true) {
 			System.out.println("DVD is rented by " + this.getRented());
