@@ -13,6 +13,7 @@ public class Main {
 		bookList.add(new Book("Leaving things undone", 3));
 		dvdList.add(new DVD("60 minutes of superlaud screams", 60));
 		dvdList.add(new DVD("Endless sufferting of listener", 6666));
+		dvdList.add(new DVD("Collection of stone age songs", 1));
 		
 
 		Scanner scan = new Scanner(System.in);
@@ -30,7 +31,7 @@ public class Main {
 					break;
 
 				case 3:
-					returnItem();
+					returnItem(bookList, dvdList);
 					break;
 
 				case 4:
@@ -41,20 +42,27 @@ public class Main {
 			answer = scan.nextInt();
 		}
 		scan.close();
+		System.out.println("Bye");
 	}
 
 	public static void printItems(ArrayList<Book> books, ArrayList<DVD> dvds) {
 		System.out.println("List of available books:");
+		int j = 0;
 		for (Book i : books) {
+			System.out.print(j+". ");
+			j++;
 			i.getDetails();
 		}
 		System.out.println("List of available DVDs:");
+		j = 0;
 		for (DVD i : dvds) {
+			System.out.print(j+". ");
+			j++;
 			i.getDetails();
 		}
 	}
 
-	public static void returnItem() {
+	public static void returnItem(ArrayList<Book> books, ArrayList<DVD> dvds) {
 		// Nothing
 	}
 
@@ -66,9 +74,11 @@ public class Main {
 
 		System.out.println("Do you rent a book (1) or DVD (2)? ");
 		int answer = scan.nextInt();
+		scan.nextLine();
 
 		System.out.println("Input a number of an item.");
 		int num = scan.nextInt();
+		scan.nextLine();
 
 		System.out.println("Input a name of a client.");
 		String name = scan.nextLine();
@@ -85,7 +95,7 @@ public class Main {
 					break;
 			}
 
-		scan.close();
+		// scan.close();
 		}
 
 	private static void printOptions() {
