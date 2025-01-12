@@ -63,7 +63,39 @@ public class Main {
 	}
 
 	public static void returnItem(ArrayList<Book> books, ArrayList<DVD> dvds) {
-		// Nothing
+		Book book;
+		DVD dvd;
+		boolean returnStatus;
+		Scanner scan = new Scanner(System.in);
+
+		System.out.println("Do you rent a book (1) or DVD (2)? ");
+		int answer = scan.nextInt();
+		scan.nextLine();
+
+		System.out.println("Input a number of an item.");
+		int num = scan.nextInt();
+		scan.nextLine();
+
+		System.out.println("Input a name of a client.");
+		String name = scan.nextLine();
+
+		switch(answer) {
+				case 1:
+					book = books.get(num);
+					returnStatus = book.returnItem(name);
+					if (returnStatus == false) {
+							System.out.println("Book was not rented or it was rented by other client.");
+						};
+					break;
+
+				case 2:
+					dvd = dvds.get(num);
+					returnStatus = dvd.returnItem(name);
+					if (returnStatus == false) {
+							System.out.println("DVD was not rented or it was rented by other client.");
+						};
+					break;
+			}
 	}
 
 	public static void rentItem(ArrayList<Book> books, ArrayList<DVD> dvds) {

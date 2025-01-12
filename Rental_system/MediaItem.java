@@ -27,7 +27,7 @@ abstract class MediaItem {
 	
 	public boolean returnItem(String name) {
 	
-		if (this.isRented == true && this.rentedBy == name) {
+		if (this.isRented == true && this.rentedBy.equals(name)) {
 			this.isRented = false;
 			this.rentedBy = "";
 			returnItem = true;
