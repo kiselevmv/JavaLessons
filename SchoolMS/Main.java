@@ -27,10 +27,23 @@ public class Main {
                     n7.addStudent(ID, name);
                     break;
                 case 2:
-                    // do what you want
+                    // Add course
+                    System.out.println("Enter course ID");
+                    String courseID = scan.nextLine();
+                    System.out.println("Enter course name");
+                    String courseName = scan.nextLine();
+                    n7.addCourse(courseID, courseName);
                     break;
                 case 3:
-                    // do what you want
+                    // Assign grade
+                    System.out.println("Enter student's name");
+                    String studentName = scan.nextLine();
+                    System.out.println("Enter student's grade");
+                    int grade = scan.nextInt();
+                    scan.nextLine();
+                    String studentID = n7.findStudentByName(studentName);
+                    n7.assignGrade(studentID, "", grade);
+                    // I struggle to keep both grade and couese ID without Record datatype
                     break;
                 case 4:
                 	// Search student by name

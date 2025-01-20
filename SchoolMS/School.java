@@ -33,4 +33,21 @@ public class School {
 		}
 		return ID;
 	}
+
+	void assignGrade(String studentID, String courseId, int grade) {
+		for (Student i : students) {
+			if (i.getStudentID().equals(studentID)) {
+				i.addGrade(grade);
+			}
+		}
+	}
+
+	void findFilingStudents() {
+		for (Student i : students) {
+			if (i.isFailed() == true) {
+				System.out.println("Student " + i.getStudentName() + "is failed.");
+			}
+		}
+
+	}
 }

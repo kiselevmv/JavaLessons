@@ -1,5 +1,16 @@
 import java.util.ArrayList; // import the ArrayList class
 
+/*
+Attributes:
+- courseName (String): The name of the course.
+- courseId (String): A unique identifier for the course.
+- enrolledStudents (List of Students): A list of students enrolled in the course.
+Methods:
+- addStudent(Student student): Adds a student to the course.
+- getStudentList(): Returns a list of all enrolled students.
+- toString(): Returns a string representation of the course (e.g., name and ID).
+*/
+
 public class Course {
 	private String courseName;
 	private String courseID;
