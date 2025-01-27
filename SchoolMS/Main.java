@@ -11,12 +11,12 @@ public class Main {
 		n7.addCourse("C02", "Kidnapping");
 		n7.addCourse("C03", "Assasination, practical course");
 
+        userInterface menu = new userInterface();
         int options = 0;
-        Scanner scan = new Scanner(System.in); // Capturing the input
         do {
-        	printMenu();
-        	options = scan.nextInt();
-        	scan.nextLine();
+        	menu.printMenu();
+            Scanner scan = new Scanner(System.in);
+            options = menu.options();
             switch (options) {
                 case 1:
                     // Add student
@@ -62,18 +62,6 @@ public class Main {
         } while (options != 10); // quitting the program
     }
 
-    private static void printMenu() {
-    	System.out.println("Main menu");
-		System.out.println("1.\tAdd Student");
-        System.out.println("2.\tAdd Course");
-        System.out.println("3.\tAssign Grade");
-        System.out.println("4.\tSearch Student by Name");
-        System.out.println("5.\tList All Students");
-        System.out.println("6.\tList All Courses");
-        System.out.println("7.\tShow Failing Students");
-        System.out.println("8.\tFind Top-Performing Student");
-        System.out.println("9.\tFind Most Popular Course");
-        System.out.println("10.\tQuit");
-    }
+    
 
 }
