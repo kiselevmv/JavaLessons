@@ -18,6 +18,16 @@ public class School {
 		}
 	}
 
+	String listAllStudents() {
+		StringBuilder list = new StringBuilder("<html><p>List of students</p>");
+		for (Student i : students) {
+			list.append("<p>");
+			list.append(i.toString());
+			list.append("</p>");
+		}
+		return list.toString();
+	}
+
 	void displayAllCourses() {
 		for (Course i : courses) {
 			System.out.println(i.toString());

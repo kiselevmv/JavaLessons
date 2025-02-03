@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+
+// Main class
+
 public class userInterface {
 
 	static Scanner scan = new Scanner(System.in); // Capturing the input;

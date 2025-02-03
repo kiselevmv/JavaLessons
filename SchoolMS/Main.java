@@ -11,12 +11,18 @@ public class Main {
 		n7.addCourse("C02", "Kidnapping");
 		n7.addCourse("C03", "Assasination, practical course");
 
-        userInterface menu = new userInterface();
+        //Schedule a job for the event-dispatching thread:
+        //creating and showing this application's GUI.
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                userGraphicInterface menu = new userGraphicInterface();
+            }
+        });
         int options = 0;
         do {
-        	menu.printMenu();
+        	// menu.printMenu();
             Scanner scan = new Scanner(System.in);
-            options = menu.options();
+            options = 8;
             switch (options) {
                 case 1:
                     // Add student
