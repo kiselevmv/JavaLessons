@@ -11,6 +11,7 @@ public class SchoolMS extends JFrame {
     private JMenuBar mb = new JMenuBar();
 
     // create a menu
+    private JMenu fileMenu = new JMenu("File");
     private JMenu x = new JMenu("Menu"); 
 
     // Menu items
@@ -19,16 +20,32 @@ public class SchoolMS extends JFrame {
     private JMenuItem m3 = new JMenuItem("Assign grade");
     private JMenuItem m4 = new JMenuItem("List Student's");
 
+    private JMenuItem f1 = new JMenuItem("Save");
+
     private JButton btnAddStudent = new JButton("Add student");
     private JButton btnAddCourse = new JButton("Add course");
+    private JButton asSubmit = new JButton("Submit");
+    private JButton asBack = new JButton("Back");
 
     // create a label
-    private JLabel l = new JLabel("no task ");
+    private JLabel l = new JLabel("no task "); 
+    private JLabel asID = new JLabel("Student's ID");
+    private JLabel asName = new JLabel("Student's name");
+
+    // Create data input
+    private JTextField id = new JTextField(4);
+    private JTextField name = new JTextField(16);
 
     private ActionListener addStudentListener = new addStudentListener();
     private ActionListener listStudentsListener = new listStudentsListener();
 
     private School n7 = new School();
+
+    // Use the panel to group elements
+    private JPanel panel = new JPanel();
+    private JPanel addStudentPanel = new JPanel();
+
+    private CardLayout cardlayout = new CardLayout();
 
     public SchoolMS() {
 
@@ -39,32 +56,77 @@ public class SchoolMS extends JFrame {
         n7.addCourse("C02", "Kidnapping");
         n7.addCourse("C03", "Assasination, practical course");
 
-        // Use the panel to group elements
-        JPanel panel = new JPanel();
-
-        // Setting box layout 
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS)); 
-
-        // Add menu to a menu bar
-        panel.add(btnAddStudent);
-        panel.add(btnAddCourse);
-        panel.add(l);
-        this.add(panel); // Add buttons to the frame
+        // Add menu to a window
         x.add(m1);
         x.add(m2);
         x.add(m3);
         x.add(m4);
+        fileMenu.add(f1);
+        mb.add(fileMenu);      
         mb.add(x);
-        this.setJMenuBar(mb);
+
+        setJMenuBar(mb);
+
+        Container contentPane = this.getContentPane();
+        contentPane.setLayout(cardlayout);
+
+        // Add panel to a frame
+        contentPane.add(panel, "Panel 1");
+        contentPane.add(addStudentPanel, "Panel 2");
+
+        // Show main panel
+        // panel.setVisible(true);
+        // addStudentPanel.setVisible(false);
+
+        // Setting box layout 
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS)); 
+
+        // Add buttons to a panel
+        panel.add(btnAddStudent);
+        panel.add(btnAddCourse);
+        panel.add(l);
+
+        // Setting panel layout
+        addStudentPanel.setLayout(new GridLayout(0, 2));
+
+        // Add buttons to a panel
+        addStudentPanel.add(asID);
+        addStudentPanel.add(id);
+        addStudentPanel.add(asName);
+        addStudentPanel.add(name);
+        addStudentPanel.add(asSubmit);
+        addStudentPanel.add(asBack);
         
 
         // add ActionListener to control items
         btnAddStudent.addActionListener(addStudentListener);
         m1.addActionListener(addStudentListener);
         m4.addActionListener(listStudentsListener);
+        asSubmit.addActionListener(new ActionListener(){
+                    @Override
+                    public void actionPerformed( ActionEvent e ) {
+                        n7.addStudent(id.getText(),name.getText());
+                        id.setText("");
+                        name.setText("");
+                    }
+                });
+        asBack.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed( ActionEvent e ) {
+                // cardlayout.next(contentPane);
+                addStudentPanel.setVisible(false);
+                panel.setVisible(true);
+            }
+        });
         // m2.addActionListener(m);
         // m3.addActionListener(m);
     }
+
+    public void showAddStudent() {
+        this.panel.setVisible(false);
+        this.addStudentPanel.setVisible(true);
+    }
+
 
 	public static void main(String[] args) {
 		
@@ -74,10 +136,11 @@ public class SchoolMS extends JFrame {
         m.setLocationRelativeTo(null); // Center the frame
         m.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // set the size of the frame
-        m.setSize(200, 400);
+        // m.setSize(300, 500);
+        // m.setPreferredSize(new Dimension(200, 300));
         // show the frame
+        m.pack();
         m.setVisible(true);
-
 
         /*
         int options = 0;
@@ -130,44 +193,14 @@ public class SchoolMS extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             listAllStudents(n7.listAllStudents());
-            //n7.displayAllStudents();
         }
-        
     }
 
     class addStudentListener implements ActionListener { // inner class
         @Override
         public void actionPerformed(ActionEvent e) {
-            // create a dialog Box
-            JFrame f = new JFrame();
-            JDialog d = new JDialog(f, "Add student");
-            JPanel p = new JPanel();
-            p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS)); 
-            // create a label
-            JLabel l1 = new JLabel("Student's ID");
-            JTextField id = new JTextField(4);
-            JLabel l2 = new JLabel("Student's name");
-            JTextField name = new JTextField(16);
-            // create a new button
-            JButton b = new JButton("submit");
-            b.addActionListener(new ActionListener(){
-                    @Override
-                    public void actionPerformed( ActionEvent e ) {
-                        n7.addStudent(id.getText(),name.getText());
-                        d.dispose();
-                    }
-                });
-            // create a object of the text class
-            p.add(l1);
-            p.add(id);
-            p.add(l2);
-            p.add(name);
-            p.add(b);
-            d.add(p);
-            // set size of dialog
-            d.setSize(200, 200);
-            // set visibility of dialog
-            d.setVisible(true);
+            panel.setVisible(false);
+            addStudentPanel.setVisible(true);
         }
     }
 }

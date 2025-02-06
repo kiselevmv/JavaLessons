@@ -1,0 +1,29 @@
+# Project idea
+
+Recipe management system.
+
+## Problem solving
+
+Store recipes and requirements fo ingridients. 
+
+## Key features
+
+1. Input, 
+2. Store, 
+3. Demonstrate recipes from a database. 
+4. User GUI
+5. Optional: show recipes from a base with selected ingridients.
+
+## Time schedule
+
+10.02 - minimal console application
+13.02 - GUI application
+17.02 - Optional feature and code polishing.
+
+## Final goal
+
+Functional application without errors. Useful for real life.
+
+
+
+
